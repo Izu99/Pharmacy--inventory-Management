@@ -7,7 +7,9 @@ import {
 import React, { Component } from "react";
 
 import "./App.css";
-import Login from "./Components/Login";
+// import Login from "./Components/Login"
+import ProductHomePage from "./Components/ProductHomePage";
+
 class App extends Component {
 	render() {
 		return (
@@ -16,7 +18,8 @@ class App extends Component {
 				<Router>
 					<Switch>
 						
-						<Route path='/Login' component={Login} />
+						{/* <Route path='/Login' component={Login} /> */}
+						<Route path='/producthomepage' component={ProductHomePage} />
 						
 
 						<Redirect from='*' to='/404' />
