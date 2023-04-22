@@ -11,6 +11,8 @@ import "./App.css";
 import ProductHomePage from "./Components/ProductHomePage";
 import AddProdcutForm from "./Components/AddProductForm";
 import EditProductForm from "./Components/EditProductForm";
+import AdminProductTable from "./Components/AdminProductTable";
+import ProductSearch from "./Components/ProductSearch";
 
 class App extends Component {
 	render() {
@@ -24,8 +26,10 @@ class App extends Component {
 						<Route path='/producthomepage' component={ProductHomePage} />
 						<Route path='/addproductform' component={AddProdcutForm}/>
 						<Route path='/editproductform' component={EditProductForm}/>
+						<Route path='/AdminProductTable' component={AdminProductTable}/>
+						<Route  path='/ProductSearch/:pathParam1?' component={ProductSearch}/>
 
-						<Redirect from='*' to='/404' />
+						{/* <Redirect from='*' to='/404' /> */}
 					</Switch>
 				</Router>
 			</div>
