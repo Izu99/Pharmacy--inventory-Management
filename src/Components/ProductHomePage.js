@@ -2,10 +2,54 @@ import React, { Component } from "react";
 import logo from "../images/logo.png";
 import "../Styles/ProductHomePage.css";
 import "../Styles/Header.css";
-
+import {BrowserRouter as Router, Link} from "react-router-dom";
+ import ProductTableRow from './ProductClientThrow.js';
 import "../Styles/LeftSidebar.css";
+import "../Styles/VehicleTable.css";
+import axios from 'axios';
 
 export default class ProductHomePage extends Component {
+
+		   
+    constructor(props) {
+        super(props);
+        this.state = {pinventory : [], search:''};
+        this.state.Station = this.props.match.params.id;
+
+         this.onChangeSearch = this.onChangeSearch.bind(this);
+    }
+
+    onChangeSearch(e){
+        this.setState( {
+           search: e.target.value
+        });
+
+    }
+
+    componentDidMount() {
+        // alert('email is ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/PharmacyInventory/getall/')
+            .then(response => {
+                // alert('Pass una')
+                // alert('Data Tika :'+response.data)
+                this.setState({pinventory : response.data});
+
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
+
+    tabRow(){
+        return this.state.pinventory.map(function (object, i){
+            return <ProductTableRow obj = {object} key = {i}/>;
+        });
+        // return <OrderTableRow obj={this.state.orders}/>
+    }
+
+ 
+
+
 	render() {
 		return (
 			<div className='ProductHomePage'>
@@ -50,109 +94,60 @@ export default class ProductHomePage extends Component {
 				<div className='right-side'>
 					<h2>Inventory Management</h2>
 
+					<form onSubmit={this.onSubmit}>
 					<table className='table1'>
 						<tr>
 							<td>
 								<p>Search Product</p>
 							</td>
 							<td>
-								<input type='text' placeholder='search...' />
+								<input type='text' placeholder='search...'  required value={this.state.search} onChange = {this.onChangeSearch} />
 							</td>
 							<td>
-								<select name='' id=''>
-									<option value=''>option1</option>
-									<option value=''>option2</option>
-									<option value=''>option3</option>
-								</select>
-							</td>
+                            <select name="" id=""  required value={this.state.search} onChange = {this.onChangeSearch}>
+                                <option value='Personal Care Products'>Personal Care Products</option>
+                                <option value='Herbal and Natural Remedies'>Herbal and Natural Remedies</option>
+                                <option value='Vaccines'>Vaccines</option>
+                                <option value='Beauty Products'>Beauty Products</option>
+                           
+                            </select>
+
+                       
+					{/* <input type="text" placeholder="Search..." className="search" required value={this.state.search} onChange = {this.onChangeSearch}/> */}
+				<button type="submit" className="search">  <a href ={"/ProductSearch/"+this.state.search} >Search</a></button>
+			
+                    
+                        </td>
+
 						</tr>
 					</table>
+                    </form>
 					<p className='list'>Product List</p>
-					<table className='table2'>
-						<tr>
-							<td>Product Name</td>
-						</tr>
-						<tr>
-							<td>
-								Quantity
-								<input type='number' />
-							</td>
-							<td>
-								<p>Rs.200.00</p>
-							</td>
-							<td>20 Items Remaining</td>
-                            <td><button type='submit'>Buy Now</button>
-                            <button type="submit">Add to Cart</button></td>
-						</tr>
+				
+				  
+					<div className='row-frm'>
+					<table className='table table-striped' style={{ marginTop: 20 }}>
+						<thead>
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+
+								<th colSpan='3'></th>
+							</tr>
+						</thead>
+						<tbody>{this.tabRow()}</tbody>
 					</table>
-                    <table className='table2'>
-						<tr>
-							<td>Product Name</td>
-						</tr>
-						<tr>
-							<td>
-								Quantity
-								<input type='number' />
-							</td>
-							<td>
-								<p>Rs.200.00</p>
-							</td>
-							<td>20 Items Remaining</td>
-                            <td><button type='submit'>Buy Now</button>
-                            <button type="submit">Add to Cart</button></td>
-						</tr>
-					</table>
-                    <table className='table2'>
-						<tr>
-							<td>Product Name</td>
-						</tr>
-						<tr>
-							<td>
-								Quantity
-								<input type='number' />
-							</td>
-							<td>
-								<p>Rs.200.00</p>
-							</td>
-							<td>20 Items Remaining</td>
-                            <td><button type='submit'>Buy Now</button>
-                            <button type="submit">Add to Cart</button></td>
-						</tr>
-					</table>
-                    <table className='table2'>
-						<tr>
-							<td>Product Name</td>
-						</tr>
-						<tr>
-							<td>
-								Quantity
-								<input type='number' />
-							</td>
-							<td>
-								<p>Rs.200.00</p>
-							</td>
-							<td>20 Items Remaining</td>
-                            <td><button type='submit'>Buy Now</button>
-                            <button type="submit">Add to Cart</button></td>
-						</tr>
-					</table>
-                    <table className='table2'>
-						<tr>
-							<td>Product Name</td>
-						</tr>
-						<tr>
-							<td>
-								Quantity
-								<input type='number' />
-							</td>
-							<td>
-								<p>Rs.200.00</p>
-							</td>
-							<td>20 Items Remaining</td>
-                            <td><button type='submit'>Buy Now</button>
-                            <button type="submit">Add to Cart</button></td>
-						</tr>
-					</table>
+					
+				</div>
+                       
+
+					
+				
+                     
+                   
 				</div>
 			</div>
 		);
