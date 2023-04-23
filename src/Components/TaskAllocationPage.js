@@ -20,7 +20,8 @@ export default class TaskAllocationPage extends Component{
             taskNo: '',
             staffid: '',
             description:'',
-            email:''
+            email:'',
+            status:''
         
         }
     }
@@ -48,12 +49,15 @@ export default class TaskAllocationPage extends Component{
    
     
     onSubmit(e){
+
+        this.state.status = "pending";
         e.preventDefault();
         const obj = {
             taskNo : this.state.taskNo,
             staffid : this.state.staffid,
             description : this.state.description,
-            email : this.state.email
+            email : this.state.email,
+            status : this.state.status
           
            
         };
@@ -69,7 +73,8 @@ export default class TaskAllocationPage extends Component{
                                         taskNo: '',
                                         staffid: '',
                                         description:'',
-                                        email:''
+                                        email:'',
+                                        status:''
                             
                                     })
                                     console.log(res.data)});

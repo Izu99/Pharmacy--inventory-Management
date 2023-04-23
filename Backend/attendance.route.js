@@ -121,6 +121,7 @@ attendanceRoutes.route('/tupdate/:id').post(function (req,res){
             taskallocate.staffid = req.body.staffid;
             taskallocate.description = req.body.description;
             taskallocate.email = req.body.email;
+            taskallocate.status = req.body.status;
           
             taskallocate.save().then(business => {
                 res.json('Update Complete');

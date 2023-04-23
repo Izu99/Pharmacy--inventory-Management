@@ -1,15 +1,61 @@
 import React, { Component } from "react";
+import logo from "../images/logo.png";
 import "../Styles/TaskManagementPage.css";
 import "../Styles/Header.css";
+import {BrowserRouter as Router, Link} from "react-router-dom";
+ import TableRow from './taskManagementRow';
 import "../Styles/LeftSidebar.css";
+ import "../Styles/VehicleTable.css";
+import axios from 'axios';
+
+export default class taskHomePage extends Component {
+
+		   
+    constructor(props) {
+        super(props);
+        this.state = {task : [], search:''};
+        this.state.Station = this.props.match.params.id;
+
+         this.onChangeSearch = this.onChangeSearch.bind(this);
+    }
+
+    onChangeSearch(e){
+        this.setState( {
+           search: e.target.value
+        });
+
+    }
+
+    componentDidMount() {
+        // alert('email is ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/attendance/tgetall/')
+            .then(response => {
+                // //  alert('Pass una')
+                // alert('Data Tika :'+response.data)
+                this.setState({task : response.data});
+
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
+
+    tabRow(){
+        return this.state.task.map(function (object, i){
+            return <TableRow obj = {object} key = {i}/>;
+        });
+        // return <OrderTableRow obj={this.state.orders}/>
+    }
+
+ 
 
 
-export default class TaskManagementPage extends Component{
-    render() {
-        return(
-            <div className='TaskManagementPage'>
-                <div className="left-sidebar">
-                    <div className='component-name dashboard'>
+	render() {
+		return (
+			<div className='ProductHomePage'>
+				<div className='left-sidebar'>
+					<img src={logo} alt='' className='header-logo' />
+					<div className='component-name dashboard'>
 						<div className='text'>
 							<a href='/dashboard'> Dashboard</a>
 						</div>
@@ -44,10 +90,16 @@ export default class TaskManagementPage extends Component{
 							<a href='/dashboard'> Dashboard</a>
 						</div>
 					</div>
-                </div>
-                <div className="right-side">
-                    <h1>Task Management</h1>
-                        <table className="table1">
+				</div>
+				<div className='right-side'>
+					<h2>Inventory Management</h2>
+
+                   
+					<p className='list'>Product List</p>
+				
+				  
+					<div className='row-frm'>
+                    <table className="table1">
                             <tr>
                                 <td>
                                     <p>Today Allocated Task</p>
@@ -60,32 +112,25 @@ export default class TaskManagementPage extends Component{
                             </tr> 
                         </table>   
                         <p className="ptag">Today Attendance of Staff Members</p>
-                        <table className="table3">
+                         <table className="table3">
                             <tr>
                                 <th>Task No</th>
                                 <th>Details</th>
                                 <th>Status</th>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Order Medicine</td>
-                                <td><input type="checkbox"/></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Check Medical Storage</td>
-                                <td><input type="checkbox"/></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Monitoring Stock Levels</td>
-                                <td><input type="checkbox"/></td>
-                            </tr>
-                        </table>
-                       
-                </div>
-            </div>
-        );
-    }
-}
+                            {this.tabRow()}
+                        </table> 
 
+					
+				</div>
+                       
+
+					
+				
+                     
+                   
+				</div>
+			</div>
+		);
+	}
+}
