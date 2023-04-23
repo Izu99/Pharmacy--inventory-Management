@@ -175,6 +175,26 @@ attendanceRoutes.route('/tgetall').get(function(req, res) {
 });
 
 
+attendanceRoutes.route('/taskstatus/:id').get(function (req,res){
+ 
+    let id = req.params.id;
+    console.log("change payment id : "+id)
+    Taskallocate.findById(id, function (err, taskallocate){
+        if(!taskallocate)
+            res.status(404).send("Data is not found??");
+        else{
+            taskallocate.status = "Done";
+
+            taskallocate.save().then(taskallocate => {
+                res.json('Update Completed');
+            })
+                .catch(err =>{
+                    res.status(400).send("Unable to update data");
+                });
+        }
+    });
+});
+
 
 // ***************************************************************************************
 

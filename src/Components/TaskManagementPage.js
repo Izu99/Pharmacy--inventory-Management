@@ -115,8 +115,11 @@ export default class taskHomePage extends Component {
                          <table className="table3">
                             <tr>
                                 <th>Task No</th>
+                                <th>staffid</th>
                                 <th>Details</th>
                                 <th>Status</th>
+                                
+                                <th colSpan='3'>Action</th>
                             </tr>
                             {this.tabRow()}
                         </table> 
