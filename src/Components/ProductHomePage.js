@@ -104,6 +104,9 @@ export default class ProductHomePage extends Component {
 								<input type='text' placeholder='search...'  required value={this.state.search} onChange = {this.onChangeSearch} />
 							</td>
 							<td>
+							<button type="submit" className="search">  <a href ={"/ProductSearch/"+this.state.search} className="link2" >Search</a></button>
+							</td>
+							<td>
                             <select name="" id=""  required value={this.state.search} onChange = {this.onChangeSearch}>
                                 <option value='Personal Care Products'>Personal Care Products</option>
                                 <option value='Herbal and Natural Remedies'>Herbal and Natural Remedies</option>
@@ -114,7 +117,7 @@ export default class ProductHomePage extends Component {
 
                        
 					{/* <input type="text" placeholder="Search..." className="search" required value={this.state.search} onChange = {this.onChangeSearch}/> */}
-				<button type="submit" className="search">  <a href ={"/ProductSearch/"+this.state.search} >Search</a></button>
+
 			
                     
                         </td>
@@ -126,14 +129,15 @@ export default class ProductHomePage extends Component {
 				
 				  
 					<div className='row-frm'>
-					<table className='table table-striped' style={{ marginTop: 20 }}>
+					<table className='table table-striped table2' style={{ marginTop: 20 }}>
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
+								<th>Item name</th>
+								<th>Item Price</th>
+								<th>Item Catogory</th>
+								<th>Product No</th>
+								<th>Quantity</th>
+								<th>Description</th>
 
 								<th colSpan='3'></th>
 							</tr>

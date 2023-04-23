@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "../Styles/AddProductForm.css";
+import "../Styles/EditProductForm.css";
 import "../Styles/Header.css";
 import "../Styles/LeftSidebar.css";
 import axios from 'axios';
 import {BrowserRouter as Router, Link} from "react-router-dom";
 
 
-export default class AddProductForm extends Component{
+export default class EditProductForm extends Component{
 
     constructor(props) {
         super(props);
@@ -131,7 +131,7 @@ export default class AddProductForm extends Component{
 
 render() {
     return(
-        <div className='AddProductForm'> 
+        <div className='EditProductForm'> 
             <div className='left-sidebar'>
                 <div className='component-name dashboard'>
 				    <div className='text'>
@@ -170,7 +170,7 @@ render() {
 			    </div>
             </div>  
             <div className='right-side'>
-                <h2>Add Product Form</h2>
+                <h2>Edit Product Form</h2>
                 <form onSubmit={this.onSubmit}>
                 <table className="table">
                     <tr >
@@ -223,7 +223,7 @@ render() {
                     </tr>
                     <tr>
                          <td>
-                            <button type="submit">Add Product</button>
+                            <button type="submit">Update Product</button>
                         </td>
                     </tr>
                 </table>

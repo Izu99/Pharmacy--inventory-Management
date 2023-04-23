@@ -133,11 +133,17 @@ export default class ManageAttendancePage extends Component{
                         <table className="table2">
                             <tr> 
                                 <td>Search Member name</td>
-                                <td> <input type="text" required value={this.state.search} onChange = {this.onChangeSearch}/ ></td>
+                                <td> 
+                                    <input type="text"  required value={this.state.search} onChange = {this.onChangeSearch}/ >
+                                </td>
+                                <td> 
+                                    <button type="submit" className="search"> 
+                                        <a href ={"/searchAttendance/"+this.state.search} className="link">Search</a>
+                                    </button>
+                                </td>
+                           
                             </tr>
-                            <tr>
-                            <button type="submit" className="search">  <a href ={"/searchAttendance/"+this.state.search} >Search</a></button>
-                            </tr>
+                           
                         </table>
                         </form>
 
@@ -161,6 +167,7 @@ export default class ManageAttendancePage extends Component{
                 </div>
             </div>
         );
-    }
-}
+        }
+        }
+        
 
