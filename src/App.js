@@ -18,6 +18,7 @@ import ManageAttendancePage from "./Components/ManageAttendancePage";
 import MarkAttendancePage from "./Components/MarkAttendancePage";
 import TaskAllocationPage from "./Components/TaskAllocationPage";
 import TaskManagementPage from "./Components/TaskManagementPage";
+import paymentpage from "./Components/paymentpage";
 
 class App extends Component {
 	render() {
@@ -39,6 +40,7 @@ class App extends Component {
 						<Route path='/markattendance' component={MarkAttendancePage}/>
 						<Route path='/taskallocationpage' component={TaskAllocationPage}/>
 						<Route path='/taskmanagementpage' component={TaskManagementPage}/>
+						<Route path='/paymentpage' component={paymentpage}/>
 
 
 						{/* <Redirect from='*' to='/404' /> */}
