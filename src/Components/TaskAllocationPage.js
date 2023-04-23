@@ -2,9 +2,92 @@ import React, { Component } from "react";
 import "../Styles/TaskAllocationPage.css";
 import "../Styles/Header.css";
 import "../Styles/LeftSidebar.css";
-
+import axios from 'axios';
 
 export default class TaskAllocationPage extends Component{
+
+
+    constructor(props) {
+        super(props);
+        this.onChangetaskNo = this.onChangetaskNo.bind(this);
+        this.onChangestaffid = this.onChangestaffid.bind(this);
+        this.onChangedescription = this.onChangedescription.bind(this);
+        this.onChangeemail = this.onChangeemail.bind(this);
+      
+        this.onSubmit = this.onSubmit.bind(this);
+
+        this.state = {
+            taskNo: '',
+            staffid: '',
+            description:'',
+            email:''
+        
+        }
+    }
+    onChangetaskNo(e){
+        this.setState( {
+            taskNo: e.target.value
+        });
+    }
+    onChangestaffid(e){
+        this.setState( {
+            staffid: e.target.value
+        });
+    }
+    onChangedescription(e){
+        this.setState( {
+            description: e.target.value,
+        });
+    }
+  
+    onChangeemail(e){
+        this.setState( {
+            email: e.target.value
+        });
+    }
+   
+    
+    onSubmit(e){
+        e.preventDefault();
+        const obj = {
+            taskNo : this.state.taskNo,
+            staffid : this.state.staffid,
+            description : this.state.description,
+            email : this.state.email
+          
+           
+        };
+
+            if(this.state.taskNo.length > 0){
+                if(this.state.description.length > 5){
+                 
+                      
+                            axios.post('http://localhost:4000/attendance/tadd',obj)
+                                .then(res => {
+                                    alert("add Successfully");
+                                    this.setState({
+                                        taskNo: '',
+                                        staffid: '',
+                                        description:'',
+                                        email:''
+                            
+                                    })
+                                    console.log(res.data)});
+                            this.props.history.push('/manageattendancepage');
+                   
+                }
+                else{
+                    alert('Invalid.Description be more than 2 characters');
+                }
+            } 
+            else {
+                alert('Pleace enter the task No');
+            }
+        
+    }
+
+
+
     render(){
         return(
             <div className="TaskAllocationPage">
@@ -48,20 +131,21 @@ export default class TaskAllocationPage extends Component{
                 <div className="right-side">
                     <h1>Task Management</h1>
                     <p>Allocate Task</p>
+                    <form onSubmit={this.onSubmit}>
                     <table className="table1">
                         <tr>
                             <td>Task No</td>
                         </tr>
                         <tr>
-                            <td><input type="number"/></td>
+                            <td><input type="number"  required value={this.state.taskNo} onChange = {this.onChangetaskNo} /></td>
                         </tr>
                         <tr>
                             <td>Staff Id *</td>
                         </tr>
                         <tr>
                             <td>
-                                <select name="" id="">
-                                    <option value="">A001</option>
+                                <select name="" id=""  required value={this.state.staffid} onChange = {this.onChangestaffid} >
+                                    <option value="A001">A001</option>
                                     <option value="">A002</option>
                                     <option value="">A003</option>
                                     <option value="">A004</option>
@@ -71,15 +155,23 @@ export default class TaskAllocationPage extends Component{
                             <td>Details *</td>
                         </tr>
                         <tr>
-                            <td><input type="text"/></td>
+                            <td><input type="text"  required value={this.state.description} onChange = {this.onChangedescription} /></td>
                         </tr>
+
+                        {/* <tr>
+                            <td>Details *</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text"  required value={this.state.description} onChange = {this.onChangedescription} /></td>
+                        </tr> */}
+
                         <tr>
                             <td>
                                 <button type="submit">Allocate Task</button>
                             </td>
                         </tr>
                     </table> 
-
+                    </form>
                 </div>
         </div>
 );

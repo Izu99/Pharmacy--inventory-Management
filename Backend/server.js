@@ -9,6 +9,7 @@ const config = require('./DB.js');
 
 // const studentRoutes = require('./student.route');
 const inventoryRoutes = require('./inventoy.route.js');
+const attendanceRoutes = require('./attendance.route.js');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, {useNewUrlParser: true}).then(
@@ -21,7 +22,8 @@ app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
 
 app.use('/PharmacyInventory',inventoryRoutes);
-// app.use('/student',studentRoutes);
+app.use('/attendance',attendanceRoutes);
+
 
 app.listen(PORT, function(){
     console.log('Server is running on port: ',PORT);

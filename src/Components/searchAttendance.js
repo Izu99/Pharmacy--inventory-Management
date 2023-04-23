@@ -5,45 +5,40 @@ import "../Styles/LeftSidebar.css";
 import axios from 'axios';
 import jsPDF from "jspdf";
 import 'jspdf-autotable';
-import AdminAtendaceRow from "./AdminAtendaceRow";
+import AdminAtendacesearch from "./AdminAtendaceRow";
 
 
-export default class ManageAttendancePage extends Component{
+export default class AttendanceSearchPage extends Component{
     
     constructor(props) {
 		super(props);
-		this.state = {
-			attendance: [],
-			search: "",
-			email: this.props.match.params.id,
-		};
-		// this.state.Station = this.props.match.params.id;
+        this.state = { attendance: [] };
 
-		this.onChangeSearch = this.onChangeSearch.bind(this);
+		// this.onChangeSearch = this.onChangeSearch.bind(this);
 	}
 
-	onChangeSearch(e) {
-		this.setState({
-			search: e.target.value,
-		});
-	}
+	// onChangeSearch(e) {
+	// 	this.setState({
+	// 		search: e.target.value,
+	// 	});
+	// }
 
-	componentDidMount() {
-		
-		axios.get('http://localhost:4000/attendance/getall/')
-			.then((response) => {
-				// alert('Pass una')
+    componentDidMount() {
+        // alert('email is ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/attendance/search/'+this.props.match.params.pathParam1)
+            .then(response => {
+                // alert('Pass una')
+                // alert('Data Tika :'+response.data)
+                this.setState({attendance : response.data});
 
-				this.setState({ attendance: response.data });
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-	}
-
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
 	tabRow() {
 		return this.state.attendance.map(function (object, i) {
-			return <AdminAtendaceRow obj={object} key={i} />;
+			return <AdminAtendacesearch obj={object} key={i} />;
 		});
 		
 	}
@@ -129,18 +124,12 @@ export default class ManageAttendancePage extends Component{
                                  </td>
                             </tr> 
                         </table>   
-                        <form onSubmit={this.onSubmit}>
                         <table className="table2">
                             <tr> 
                                 <td>Search Member name</td>
-                                <td> <input type="text" required value={this.state.search} onChange = {this.onChangeSearch}/ ></td>
-                            </tr>
-                            <tr>
-                            <button type="submit" className="search">  <a href ={"/searchAttendance/"+this.state.search} >Search</a></button>
+                                <td> <input type="text"/></td>
                             </tr>
                         </table>
-                        </form>
-
                         <p className="ptag">Today Attendance of Staff Members</p>
                         <table className="table3">
                             <tr>
