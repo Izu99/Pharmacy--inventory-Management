@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "../images/logo.png";
-import "../Styles/TaskManagementPage.css";
+import "../Styles/ClientTaskManagement.css";
 import "../Styles/Header.css";
 import {BrowserRouter as Router, Link} from "react-router-dom";
  import TableRow from './ClienttaskRow';
@@ -52,7 +52,7 @@ export default class taskHomePage extends Component {
 
 	render() {
 		return (
-			<div className='TaskManagementPage'>
+			<div className='ClientTaskManagement'>
 				<div className='left-sidebar'>
 					<img src={logo} alt='' className='header-logo' />
 					<div className='component-name dashboard'>
@@ -92,7 +92,7 @@ export default class taskHomePage extends Component {
 					</div>
 				</div>
 				<div className='right-side'>
-					<h1>Task Management</h1>
+					<h2>Task Management</h2>
 				<div className='row-frm'>
                     <table className="table1">
                             <tr>
