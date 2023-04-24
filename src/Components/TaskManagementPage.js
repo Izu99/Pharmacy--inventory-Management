@@ -134,11 +134,13 @@ export default class taskHomePage extends Component {
                                 <th>Staff Id</th>
                                 <th>Details</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                              
+                                <th colSpan='5'>Action</th> 
                             </tr>
                             {this.tabRow()}
                         </table>
-                        <button className="addtask" >Add Task</button>
+                        {/* <button className="addtask" >Add Task</button> */}
+                        <button className="addtask" type="submit" >  <a href={"/taskallocationpage"} >Add Task</a></button>
                         <table className="table4">
                             <tr>
                                 <td>Generate Task Report</td>

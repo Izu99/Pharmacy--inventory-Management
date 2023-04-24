@@ -3,7 +3,7 @@ import logo from "../images/logo.png";
 import "../Styles/ProductHomePage.css";
 import "../Styles/Header.css";
 import {BrowserRouter as Router, Link} from "react-router-dom";
- import ProductTableSerach from './ProductClientThrow.js';
+import TableRow from './taskManagementRow';
 import "../Styles/LeftSidebar.css";
 import "../Styles/VehicleTable.css";
 import axios from 'axios';
@@ -13,7 +13,7 @@ export default class ProductHomePage extends Component {
 		   
     constructor(props) {
         super(props);
-        this.state = { product: [] };
+        this.state = { task: [] };
     }
 
     onChangeSearch(e){
@@ -29,7 +29,7 @@ export default class ProductHomePage extends Component {
             .then(response => {
                 // alert('Pass una')
                 // alert('Data Tika :'+response.data)
-                this.setState({product : response.data});
+                this.setState({task : response.data});
 
             })
             .catch(function (error){
@@ -38,8 +38,8 @@ export default class ProductHomePage extends Component {
     }
 
     tabRow(){
-        return this.state.product.map(function (object, i){
-            return <ProductTableSerach obj = {object} key = {i}/>;
+        return this.state.task.map(function (object, i){
+            return <TableRow obj = {object} key = {i}/>;
         });
         // return <OrderTableRow obj={this.state.orders}/>
     }
@@ -112,7 +112,11 @@ export default class ProductHomePage extends Component {
 					</table>
 					
 				</div>
-    
+                       
+
+					
+				
+                     
                    
 				</div>
 			</div>
