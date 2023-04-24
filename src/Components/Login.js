@@ -2,6 +2,7 @@ import  React, {Component} from 'react';
 import axios from 'axios';
 import {Button, Form, FormControl, Navbar} from "react-bootstrap";
 import {BrowserRouter as Router, Link} from "react-router-dom";
+import Footer from "../Components/Footer";
 
 
 import logo from "../logo.png";
@@ -96,7 +97,7 @@ export default  class Login extends  Component{
                 <div>
                     <hr className="shadow-lg card-footer"/>
                 </div>
-                {/* <Footer/> */}
+                <Footer/>
             </div>
         )
     }

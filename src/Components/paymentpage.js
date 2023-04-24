@@ -2,6 +2,7 @@ import  React, {Component} from 'react';
 import axios from 'axios'
 
 // import './Styles/cusProfile.css'
+import Footer from "../Components/Footer";
 
 
 export default  class CusAddPayment extends  Component{
@@ -188,6 +189,7 @@ export default  class CusAddPayment extends  Component{
                         </div>
                         
                     </div>
+                    <Footer />
                 </div>
         );
     }

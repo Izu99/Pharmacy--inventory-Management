@@ -9,6 +9,7 @@ import "../Styles/LeftSidebar.css";
 import axios from 'axios';
 import jsPDF from "jspdf";
 import 'jspdf-autotable';
+import Footer from "../Components/Footer";
 
 export default class taskHomePage extends Component {
 
@@ -183,6 +184,7 @@ export default class taskHomePage extends Component {
                      
                    
 				</div>
+                <Footer />
 			</div>
 		);
 	}

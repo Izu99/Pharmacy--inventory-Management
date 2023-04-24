@@ -6,6 +6,7 @@ import axios from 'axios';
 import jsPDF from "jspdf";
 import 'jspdf-autotable';
 import AdminAtendacesearch from "./AdminAtendaceRow";
+import Footer from "../Components/Footer";
 
 
 export default class AttendanceSearchPage extends Component{
@@ -148,6 +149,8 @@ export default class AttendanceSearchPage extends Component{
                             </tr>
                         </table>
                 </div>
+                <Footer />
+
             </div>
         );
     }

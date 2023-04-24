@@ -6,6 +6,7 @@ import 'jspdf-autotable';
 import "../Styles/VehicleTable.css";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import PTableRow from "./paymentRow";
+import Footer from "../Components/Footer";
 
 export default class Payment extends Component {
 	constructor(props) {
@@ -97,7 +98,7 @@ export default class Payment extends Component {
 				<div>
 					<hr className='shadow-lg card-footer' />
 				</div>
-			
+				<Footer />
 			</div>
 		);
 	}

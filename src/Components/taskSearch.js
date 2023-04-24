@@ -7,6 +7,7 @@ import TableRow from './taskManagementRow';
 import "../Styles/LeftSidebar.css";
 import "../Styles/VehicleTable.css";
 import axios from 'axios';
+import Footer from "../Components/Footer";
 
 export default class ProductHomePage extends Component {
 
@@ -115,6 +116,7 @@ export default class ProductHomePage extends Component {
                      
                    
 				</div>
+				<Footer />
 			</div>
 		);
 	}

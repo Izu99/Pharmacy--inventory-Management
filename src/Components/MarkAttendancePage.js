@@ -3,6 +3,7 @@ import "../Styles/MarkAttendancePage.css";
 import "../Styles/Header.css";
 import "../Styles/LeftSidebar.css";
 import axios from 'axios';
+import Footer from "../Components/Footer";
 
 
 export default class MarkAttendancePage extends Component{
@@ -169,6 +170,7 @@ export default class MarkAttendancePage extends Component{
                     </table> 
 </form>
                 </div>
+                <Footer />  
         </div>
 );
 }
