@@ -80,6 +80,19 @@ import axios from 'axios';
 
          this.state.total = this.state.pieces * this.state.price;
 
+            let avalablestock = 0;
+
+            avalablestock = this.state.qty - this.state.pieces;
+
+            this.state.qty = avalablestock;
+
+            if (avalablestock < 0) {
+                alert("Out of Stock");
+                this.props.history.push('/producthomepage');
+                window.location.replace('/producthomepage');
+            }
+         
+
         e.preventDefault();
         const obj = {
             pName : this.state.pName,
@@ -94,7 +107,7 @@ import axios from 'axios';
                    
         axios.post('http://localhost:4000/PharmacyInventory/oadd',obj)
                                 .then(res => {
-                                    alert("Update Successfully");
+                                    alert("add Successfully");
                                     this.setState({
                                         pName: '',
                                         category: '',
@@ -106,6 +119,23 @@ import axios from 'axios';
                                     console.log(res.data)});
                             this.props.history.push('/producthomepage');
                             window.location.replace('/producthomepage');
+
+
+                            axios.post('http://localhost:4000/PharmacyInventory/update/'+this.props.match.params.id,obj)
+                            .then(res => {
+                                alert("Update stock Successfully");
+                                this.setState({
+                                    pName: '',
+                                    price: '',
+                                    category:'',
+                                    pNo:'',
+                                    qty:'',
+                                    description:''
+                        
+                                })
+                                console.log(res.data)});
+                        this.props.history.push('/producthomepage');
+
                 
         
     }
