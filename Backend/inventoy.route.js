@@ -120,7 +120,7 @@ inventoryRoutes.route('/oedit/:id').get(function (req,res){
     });
 });
 
-inventoryRoutes.route('/update/:id').post(function (req,res){
+inventoryRoutes.route('/oupdate/:id').post(function (req,res){
     let id = req.params.id;
     Oder.findById(id, function (err, oder){
         if(!oder)
@@ -128,7 +128,7 @@ inventoryRoutes.route('/update/:id').post(function (req,res){
         else{
             oder.pName = req.body.pName;
             oder.category = req.body.category;
-            oder.qty = req.body.qty;
+            oder.pieces = req.body.pieces;
             oder.total = req.body.total;
             oder.status = req.body.status;
    

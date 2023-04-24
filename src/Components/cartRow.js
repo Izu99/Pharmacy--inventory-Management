@@ -9,12 +9,12 @@ class TableRow extends Component {
          this.delete = this.delete.bind(this);
     }
      delete(){
-         axios.get('http://localhost:4000/PharmacyInventory/delete/'+this.props.obj._id)
+         axios.get('http://localhost:4000/PharmacyInventory/odelete/'+this.props.obj._id)
              .then(this.setState({redirect: true}))
              .catch(err => console.log(err))
          //this.props.history.push('/index');
          alert("Your Order Successfully Deleted....")
-         window.location.replace('/inventoryView/'+this.props.obj.email);
+         window.location.replace('/cart/'+this.props.obj.email);
      }
     render() {
         return (
@@ -37,7 +37,7 @@ class TableRow extends Component {
                </td>
            
                 <td>
-                   <Link to={"/editproductform/"+this.props.obj._id} className="btn btn-success">edit</Link>
+                   <Link to={"/editOder/"+this.props.obj._id} className="btn btn-success">edit</Link>
                       &nbsp;
                     <button onClick={this.delete} className="btn btn-danger">Detele</button> 
                </td>  

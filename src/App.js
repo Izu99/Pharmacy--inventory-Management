@@ -11,6 +11,7 @@ import "./App.css";
 import ProductHomePage from "./Components/ProductHomePage";
 import AddProdcutForm from "./Components/AddProductForm";
 import EditProductForm from "./Components/EditProductForm";
+import editOder from "./Components/editOder";
 import AdminProductTable from "./Components/AdminProductTable";
 import ProductSearch from "./Components/ProductSearch";
 import searchAttendance from "./Components/searchAttendance";
@@ -34,6 +35,7 @@ class App extends Component {
 						<Route path='/producthomepage' component={ProductHomePage} />
 						<Route path='/addproductform' component={AddProdcutForm}/>
 						<Route path='/editproductform/:id' component={EditProductForm}/>
+						<Route path='/editOder/:id' component={editOder}/>
 						<Route path='/AdminProductTable' component={AdminProductTable}/>
 						<Route  path='/ProductSearch/:pathParam1?' component={ProductSearch}/>
 						<Route  path='/searchAttendance/:pathParam1?' component={searchAttendance}/>

@@ -140,7 +140,7 @@ import axios from 'axios';
 
                    
 
-					<button type='submit'>pay</button>
+					<button type='submit'>add</button>
 				</form>
 			</div>
             {/* <Footer /> */}
