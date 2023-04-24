@@ -198,7 +198,7 @@ render() {
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" required value={this.state.description} onChange = {this.onChangedescription}></input>
+                            <input type="text"  required value={this.state.description} onChange = {this.onChangedescription}></input>
                         </td>
                     </tr>
                     <tr>

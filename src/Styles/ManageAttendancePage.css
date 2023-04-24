@@ -69,9 +69,9 @@
 .ManageAttendancePage .right-side .table2 tr td input{
     font-size: 1rem;
     border-radius: 0.75rem;
-    width: 15rem;
-    height: 1.5rem;
-    padding:0.1rem;
+    width: 20rem;
+    height: 1rem;
+    padding:0.2rem;
     padding-left: 1rem;
  
 }
