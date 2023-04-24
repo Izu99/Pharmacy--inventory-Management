@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import axios from "axios";
 
 
-class ATableRow extends Component {
+class ACTableRow extends Component {
     constructor(props) {
         super(props);
         //  this.delete = this.delete.bind(this);
@@ -31,11 +31,9 @@ class ATableRow extends Component {
            <tr>
                
                <td>
-                   {this.props.obj.staffid}
+                   {this.props.obj.day}
                </td>
-               <td>
-                   {this.props.obj.name}
-               </td>
+               
 
              
                <td>
@@ -53,4 +51,4 @@ class ATableRow extends Component {
     }
 }
 
-export default ATableRow;
+export default ACTableRow;

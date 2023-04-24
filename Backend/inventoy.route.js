@@ -182,6 +182,28 @@ inventoryRoutes.route('/ogetall').get(function(req, res) {
 });
 
 
+inventoryRoutes.route('/stock/:id').get(function (req,res){
+ 
+    let id = req.params.id;
+    console.log("change payment id : "+id)
+    Oder.findById(id, function (err, oder){
+        if(!oder)
+            res.status(404).send("Data is not found??");
+        else{
+            oder.status = "Done";
+
+            oder.save().then(taskallocate => {
+                res.json('Update Completed');
+            })
+                .catch(err =>{
+                    res.status(400).send("Unable to update data");
+                });
+        }
+    });
+});
+
+
+
 // *********************************************************************************************
 
 

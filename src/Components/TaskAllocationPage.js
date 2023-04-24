@@ -151,9 +151,9 @@ export default class TaskAllocationPage extends Component{
                             <td>
                                 <select name="" id=""  required value={this.state.staffid} onChange = {this.onChangestaffid} >
                                     <option value="A001">A001</option>
-                                    <option value="">A002</option>
-                                    <option value="">A003</option>
-                                    <option value="">A004</option>
+                                    <option value="A001">A002</option>
+                                    <option value="A003">A003</option>
+                                    <option value="A004">A004</option>
                                 </select></td>
                         </tr>
                         <tr>

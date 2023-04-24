@@ -59,9 +59,9 @@ export default class ManageAttendancePage extends Component {
         doc.setFontSize(15);
 
         const title = "attendance Report";
-        const headers = [["staffid", "name", "day", "email"]];
+        const headers = [["staffid", "name", "status"]];
 
-        const data = this.state.attendance.map(elt => [elt.staffid, elt.name, elt.day, elt.email]);
+        const data = this.state.attendance.map(elt => [elt.staffid, elt.name, elt.status]);
 
         let content = {
             startY: 50,

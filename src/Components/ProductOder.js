@@ -14,6 +14,7 @@ import axios from 'axios';
         this.onChangecategory = this.onChangecategory.bind(this);
         this.onChangepieces = this.onChangepieces.bind(this);
         // this.onChangetotal = this.onChangetotal.bind(this);
+        //  this.approve = this.approve.bind(this);
        
         
         
@@ -84,6 +85,7 @@ import axios from 'axios';
         // if (this.state.vehicle == 'Scooter') {
         //     this.state.price = this.state.qty * 1000;
         // } 
+       
 
      const obj1 = {
          pName : this.state.pName,
@@ -103,27 +105,18 @@ import axios from 'axios';
 
             this.state.qty = avalablestock;
 
-            if (avalablestock < 0) {
+            if (this.state.qty < 0) {
                 alert("Out of Stock");
                 this.props.history.push('/producthomepage');
                 window.location.replace('/producthomepage');
             }
             else{
                 alert("avalablestock " +avalablestock);
-                axios.post('http://localhost:4000/PharmacyInventory/update/'+this.props.match.params.id,obj1)
-                .then(res => {
-                    alert("add Successfully");
-                    this.setState({
-                        pName: '',
-                        price: '',
-                        category:'',
-                        pNo:'',
-                        qty:'',
-                        description:''
+
+                
             
-                    })
-                    console.log(res.data)});
-            this.props.history.push('/producthomepage');
+                
+            
         
             }
          
@@ -155,12 +148,17 @@ import axios from 'axios';
                             this.props.history.push('/producthomepage');
                             window.location.replace('/producthomepage');
 
+                        
+                        
 
                          
 
                 
         
     }
+    // approve(){
+    //     axios.post('http://localhost:4000/PharmacyInventory/update/'+this.props.match.params.id,obj1)
+    // };
 
 
     render() {
@@ -191,8 +189,8 @@ import axios from 'axios';
 					</div>
 
                    
-
-					<button type='submit'>add</button>
+                    {/* <button onClick={this.approve} className="btn btn-danger">Complete</button>  */}
+					<button  type='submit'>add</button>
 				</form>
 			</div>
             {/* <Footer /> */}

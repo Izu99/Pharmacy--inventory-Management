@@ -1,15 +1,84 @@
-import { Component } from "react";
-import "../Styles/ClientAttendance.css";
+import React, { Component } from "react";
+import "../Styles/ManageAttendancePage.css";
 import "../Styles/Header.css";
 import "../Styles/LeftSidebar.css";
+import axios from 'axios';
+import jsPDF from "jspdf";
+import 'jspdf-autotable';
+import ACTableRow from "./clientattendanceRow";
 
 
+export default class ManageAttendancePage extends Component {
 
-export default class ClientAttendance extends Component{
-render() {
-    return (
-        <div className='AttendancePage'>
-             <div className="left-sidebar">
+    constructor(props) {
+        super(props);
+        this.state = {
+            attendance: [],
+            search: "",
+            email: this.props.match.params.id,
+        };
+        // this.state.Station = this.props.match.params.id;
+
+        this.onChangeSearch = this.onChangeSearch.bind(this);
+    }
+
+    onChangeSearch(e) {
+        this.setState({
+            search: e.target.value,
+        });
+    }
+
+    componentDidMount() {
+
+        axios.get('http://localhost:4000/attendance/getall/')
+            .then((response) => {
+                // alert('Pass una')
+
+                this.setState({ attendance: response.data });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    tabRow() {
+        return this.state.attendance.map(function (object, i) {
+            return <ACTableRow obj={object} key={i} />;
+        });
+
+    }
+
+    // exportPDF = () => {
+    //     const unit = "pt";
+    //     const size = "A4"; // Use A1, A2, A3 or A4
+    //     const orientation = "portrait"; // portrait or landscape
+
+    //     const marginLeft = 40;
+    //     const doc = new jsPDF(orientation, unit, size);
+
+    //     doc.setFontSize(15);
+
+    //     const title = "attendance Report";
+    //     const headers = [["staffid", "name", "status"]];
+
+    //     const data = this.state.attendance.map(elt => [elt.staffid, elt.name, elt.status]);
+
+    //     let content = {
+    //         startY: 50,
+    //         head: headers,
+    //         body: data
+    //     };
+
+    //     doc.text(title, marginLeft, 40);
+    //     doc.autoTable(content);
+    //     doc.save("report.pdf")
+    // }
+
+
+    render() {
+        return (
+            <div className='ManageAttendancePage'>
+                <div className="left-sidebar">
                     <div className='component-name dashboard'>
                         <div className='text'>
                             <a href='/dashboard'> Dashboard</a>
@@ -51,50 +120,49 @@ render() {
                     <table className="table1">
                         <tr>
                             <td>
-                                <p>Monthly Attended Days</p>
+                                <p>Attendance Today</p>
                                 <p>20</p>
                             </td>
                             <td>
-                                <p>Monthly Remaining Leaves</p>
+                                <p>Absent</p>
                                 <p>2</p>
                             </td>
                         </tr>
                     </table>
-                   
+                    {/* <form onSubmit={this.onSubmit}>
                         <table className="table2">
                             <tr>
-                                <td>Didn't Mark Attendance Today ?</td>
+                                <td>Search Member name</td>
                                 <td>
-                                    <button type="submit" className="Mark">Mark Attendance</button>
+                                    <input type="text" required value={this.state.search} onChange={this.onChangeSearch} />
+                                </td>
+                                <td>
+                                    <button type="submit" className="search">
+                                        <a href={"/searchAttendance/" + this.state.search} className="link">Search</a>
+                                    </button>
                                 </td>
 
                             </tr>
 
                         </table>
-                
+                    </form> */}
 
-                    <p className="ptag">Attendance History</p>
+                    <p className="ptag">Attendace History</p>
                     <table className="table3">
                         <tr>
                             <th>Day</th>
-                            <th>Attended</th>
+                            
+                            <th>Attendance</th>
                         </tr>
-                        <tr>
-                            <td>2023/04/5</td>
-                            <td>Yes</td>
-                        </tr>
-                        <tr>
-                            <td>2023/04/14</td>
-                            <td>No</td>
-                        </tr>
-                        <tr>
-                            <td>2023/04/20</td>
-                            <td>Yes</td>
-                        </tr>
-                    </table>   
+                        {this.tabRow()}
+                    </table>
+                   
                 </div>
             </div>
 
         );
     }
 }
+
+
+
