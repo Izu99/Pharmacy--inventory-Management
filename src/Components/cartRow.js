@@ -40,6 +40,8 @@ class TableRow extends Component {
                    <Link to={"/editOder/"+this.props.obj._id} className="btn btn-success">edit</Link>
                       &nbsp;
                     <button onClick={this.delete} className="btn btn-danger">Detele</button> 
+                    &nbsp;
+                    <Link to={"/paymentpage/"+this.props.obj._id} className="btn btn-success">pay</Link>
                </td>  
            </tr>
         );

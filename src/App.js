@@ -19,6 +19,7 @@ import ManageAttendancePage from "./Components/ManageAttendancePage";
 import MarkAttendancePage from "./Components/MarkAttendancePage";
 import TaskAllocationPage from "./Components/TaskAllocationPage";
 import TaskManagementPage from "./Components/TaskManagementPage";
+import paymentViewtable from "./Components/paymentViewtable";
 import paymentpage from "./Components/paymentpage";
 import cart from "./Components/cart";
 import ProductOder from "./Components/ProductOder";
@@ -46,7 +47,8 @@ class App extends Component {
 						<Route path='/markattendance' component={MarkAttendancePage}/>
 						<Route path='/taskallocationpage' component={TaskAllocationPage}/>
 						<Route path='/taskmanagementpage' component={TaskManagementPage}/>
-						<Route path='/paymentpage' component={paymentpage}/>
+						<Route path='/paymentViewtable' component={paymentViewtable}/>
+						<Route path='/paymentpage/:id' component={paymentpage}/>
 						<Route path='/cart' component={cart}/>
 						<Route path='/ProductOder/:id' component={ProductOder}/>
 						<Route path='/clienttaskpage' component={ClientTaskManagement}/>

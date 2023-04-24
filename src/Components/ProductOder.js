@@ -61,8 +61,15 @@ import axios from 'axios';
     onChangepieces(e){
         this.setState( {
             pieces: e.target.value,
+        
         });
+       
+            
+        
     }
+        
+            
+    
     // onChangetotal(e){
     //     this.setState( {
     //         total: e.target.value
@@ -78,6 +85,16 @@ import axios from 'axios';
         //     this.state.price = this.state.qty * 1000;
         // } 
 
+     const obj1 = {
+         pName : this.state.pName,
+         price : this.state.price,
+         category : this.state.category,
+         pNo : this.state.pNo,
+         qty : this.state.qty,
+         description : this.state.description
+     };
+
+
          this.state.total = this.state.pieces * this.state.price;
 
             let avalablestock = 0;
@@ -90,6 +107,24 @@ import axios from 'axios';
                 alert("Out of Stock");
                 this.props.history.push('/producthomepage');
                 window.location.replace('/producthomepage');
+            }
+            else{
+                alert("avalablestock " +avalablestock);
+                axios.post('http://localhost:4000/PharmacyInventory/update/'+this.props.match.params.id,obj1)
+                .then(res => {
+                    alert("add Successfully");
+                    this.setState({
+                        pName: '',
+                        price: '',
+                        category:'',
+                        pNo:'',
+                        qty:'',
+                        description:''
+            
+                    })
+                    console.log(res.data)});
+            this.props.history.push('/producthomepage');
+        
             }
          
 
@@ -121,20 +156,7 @@ import axios from 'axios';
                             window.location.replace('/producthomepage');
 
 
-                            axios.post('http://localhost:4000/PharmacyInventory/update/'+this.props.match.params.id,obj)
-                            .then(res => {
-                                alert("Update stock Successfully");
-                                this.setState({
-                                    pName: '',
-                                    price: '',
-                                    category:'',
-                                    pNo:'',
-                                    qty:'',
-                                    description:''
-                        
-                                })
-                                console.log(res.data)});
-                        this.props.history.push('/producthomepage');
+                         
 
                 
         
