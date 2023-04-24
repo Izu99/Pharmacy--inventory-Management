@@ -15,6 +15,12 @@ Attendance = new Schema({
     },
     email: {
         type: String
+    } ,
+    day: {
+        type: String
+    },
+    status: {
+        type: String
     }
  },
   {

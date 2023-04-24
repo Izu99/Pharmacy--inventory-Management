@@ -35,6 +35,7 @@ attendanceRoutes.route('/update/:id').post(function (req,res){
             attendance.name = req.body.name;
             attendance.day = req.body.day;
             attendance.email = req.body.email;
+            attendance.status = req.body.status;
           
             attendance.save().then(business => {
                 res.json('Update Complete');
@@ -86,6 +87,28 @@ attendanceRoutes.route('/getall').get(function(req, res) {
         }
     });
 });
+
+
+attendanceRoutes.route('/attendance/:id').get(function (req,res){
+ 
+    let id = req.params.id;
+    console.log("change payment id : "+id)
+    Attendance.findById(id, function (err, attendance){
+        if(!attendance)
+            res.status(404).send("Data is not found??");
+        else{
+            attendance.status = "Done";
+
+            attendance.save().then(attendance => {
+                res.json('Update Completed');
+            })
+                .catch(err =>{
+                    res.status(400).send("Unable to update data");
+                });
+        }
+    });
+});
+
 
 // *************************************************************************************
 

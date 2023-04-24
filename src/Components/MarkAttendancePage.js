@@ -11,7 +11,7 @@ export default class MarkAttendancePage extends Component{
         super(props);
         this.onChangestaffid = this.onChangestaffid.bind(this);
         this.onChangename = this.onChangename.bind(this);
-        this.onChangeday = this.onChangeday.bind(this);
+         this.onChangeday = this.onChangeday.bind(this);
         this.onChangeemail = this.onChangeemail.bind(this);
       
         this.onSubmit = this.onSubmit.bind(this);
@@ -19,8 +19,9 @@ export default class MarkAttendancePage extends Component{
         this.state = {
             staffid: '',
             name: '',
+            email:'',
             day:'',
-            email:''
+            status:''
         
         }
     }
@@ -34,26 +35,33 @@ export default class MarkAttendancePage extends Component{
             name: e.target.value
         });
     }
-    onChangeday(e){
-        this.setState( {
-            day: e.target.value,
-        });
-    }
+   
   
     onChangeemail(e){
         this.setState( {
             email: e.target.value
         });
     }
+    onChangeday(e){
+        this.setState( {
+            day: e.target.value
+        });
+    }
+   
    
     
     onSubmit(e){
+
+        this.state.status = "pending";
+
         e.preventDefault();
         const obj = {
             staffid : this.state.staffid,
             name : this.state.name,
+            email : this.state.email,
             day : this.state.day,
-            email : this.state.email
+            status : this.state.status
+          
           
            
         };
@@ -68,8 +76,9 @@ export default class MarkAttendancePage extends Component{
                                     this.setState({
                                         staffid: '',
                                         name: '',
+                                        email:'',
                                         day:'',
-                                        email:''
+                                        status:''
                             
                                     })
                                     console.log(res.data)});
@@ -145,13 +154,13 @@ export default class MarkAttendancePage extends Component{
                         <tr>
                             <td><input type="text" required value={this.state.name} onChange = {this.onChangename} /></td>
                         </tr>
-                        <tr>
+                         <tr>
                             <td>Day</td>
                         </tr>
                         <tr>
                             <td><input type="date" required value={this.state.day} onChange = {this.onChangeday}/></td>
-                        </tr>
-                       
+                        </tr> 
+                        
                         <tr>
                             <td>
                                 <button type="submit">Mark Attendance</button>
