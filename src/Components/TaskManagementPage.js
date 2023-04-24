@@ -22,7 +22,7 @@ export default class taskHomePage extends Component {
     onChangeSearch(e){
         this.setState( {
            search: e.target.value
-        });
+        }); 
 
     }
 
@@ -110,16 +110,16 @@ export default class taskHomePage extends Component {
                                  </td>
                             </tr> 
                         </table>   
-                    
+                    	<form onSubmit={this.onSubmit}>
                         <table className="table2">
                         <tr> 
                                 <td>Search Staff Id</td>
                                 <td> 
-                                    <input type="text" placeholder="Search..."/>
+                                    <input type="text" placeholder="Search..." required value={this.state.search} onChange={this.onChangeSearch} />
                                 </td>
                                 <td> 
                                     <button type="submit" className="search"> 
-                                        <a className="link">Search</a>
+                                    <a href={"/taskSearch/" + this.state.search} className="link2" >Search</a>
                                     </button>
                                 </td>
                            
@@ -127,6 +127,7 @@ export default class taskHomePage extends Component {
                             
                             
                         </table>
+                        </form>
                         <p className="ptag">Today Allocated Tasks for Employees</p>
                          <table className="table3">
                             <tr>

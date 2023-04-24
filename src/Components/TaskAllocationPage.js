@@ -78,11 +78,11 @@ export default class TaskAllocationPage extends Component{
                             
                                     })
                                     console.log(res.data)});
-                            this.props.history.push('/manageattendancepage');
+                            this.props.history.push('/taskmanagementpage');
                    
                 }
                 else{
-                    alert('Invalid.Description be more than 2 characters');
+                    alert('Invalid.Description be more than 5 characters');
                 }
             } 
             else {

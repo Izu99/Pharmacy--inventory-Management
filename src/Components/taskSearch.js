@@ -25,7 +25,7 @@ export default class ProductHomePage extends Component {
 
     componentDidMount() {
         // alert('email is ' +this.props.match.params.id);
-        axios.get('http://localhost:4000/PharmacyInventory/search/'+this.props.match.params.pathParam1)
+        axios.get('http://localhost:4000/attendance/tsearch/'+this.props.match.params.pathParam1)
             .then(response => {
                 // alert('Pass una')
                 // alert('Data Tika :'+response.data)
@@ -89,27 +89,23 @@ export default class ProductHomePage extends Component {
 					</div>
 				</div>
 				<div className='right-side'>
-					<h2>Inventory Management</h2>
+					<h2>task Search </h2>
                    
-					<p className='list'>Product List</p>
+					<p className='list'></p>
 				
 				  
 					<div className='row-frm '>
-					<table className='table table-striped table2' style={{ marginTop: 20 }}>
-						<thead>
-							<tr>
-								<th>Item name</th>
-								<th>Item Price</th>
-								<th>Item Catogory</th>
-								<th>Product No</th>
-								<th>Quantity</th>
-								<th>Description</th>
-
-								<th colSpan='3'></th>
-							</tr>
-						</thead>
-						<tbody>{this.tabRow()}</tbody>
-					</table>
+					<table className="table3">
+                            <tr>
+                                <th>Task No</th>
+                                <th>Staff Id</th>
+                                <th>Details</th>
+                                <th>Status</th>
+                              
+                                <th colSpan='5'>Action</th> 
+                            </tr>
+                            {this.tabRow()}
+                        </table>
 					
 				</div>
                        
