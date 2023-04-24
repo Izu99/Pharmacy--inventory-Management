@@ -8,7 +8,7 @@ ReactDOM.render(
   <BrowserRouter>
           <App/>
   </BrowserRouter>,
-  document.getElementById('root')
+   document.getElementById('root')
 );
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
