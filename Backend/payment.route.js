@@ -87,7 +87,7 @@ paymentRoutes.route('/cusgetsearchpayment/:pathParam1?/:pathParam2?').get(functi
 });
 
 
-paymentRoutes.route('/').get(function (req,res){
+paymentRoutes.route('/getall').get(function (req,res){
     console.log("Get All Payments");
     Payments.find(function (err,payments){
         res.json(payments);

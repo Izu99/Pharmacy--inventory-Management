@@ -14,7 +14,7 @@ class PTableRow extends Component {
              .catch(err => console.log(err))
          //this.props.history.push('/index');
          alert("Your Order Successfully Deleted....")
-         window.location.replace('/inventoryView/'+this.props.obj.email);
+         window.location.replace('/AdminProductTable/'+this.props.obj.email);
      }
     render() {
         return (

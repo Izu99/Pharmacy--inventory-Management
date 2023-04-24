@@ -34,6 +34,24 @@ export default  class CusAddPayment extends  Component{
             status:''
         }
     }
+
+    componentDidMount() {
+        //alert('edit id ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/PharmacyInventory/oedit/'+this.props.match.params.id)
+            .then(res => {
+                this.setState({
+                    total: res.data.total,
+                    status: res.data.status
+                    
+                   
+                });
+            })
+            .catch(function (error){
+                console.log("Can't Get Data");
+            })
+    }
+
+
     onChangeFirstName(e){
         this.setState( {
            fname: e.target.value
@@ -51,7 +69,7 @@ export default  class CusAddPayment extends  Component{
     }
     onChangeAmount(e){
         this.setState( {
-           amount: e.target.value
+            amount: e.target.value
         });
     }
     onChangeCardNumber(e){
@@ -77,7 +95,7 @@ export default  class CusAddPayment extends  Component{
             fname : this.state.fname,
             lname : this.state.lname,
             email : this.state.email,
-            amount : this.state.amount,
+            amount : this.state.total,
             cardnumber : this.state.cardnumber,
             date : this.state.date,
             cvv : this.state.cvv,
@@ -85,10 +103,10 @@ export default  class CusAddPayment extends  Component{
         };
        
         alert ("Your Email is : "+this.state.email);
-        if(this.state.amount > 0 ){
+        // if(this.state.amount < 0 ){
                             axios.post('http://localhost:4000/payment/cusaddpayment',obj)
                                 .then(res => {
-                                    alert("Registration Successfully");
+                                    alert("payment Successfully");
                                     this.setState({
                                         fname: '',
                                         lname:'',
@@ -100,11 +118,11 @@ export default  class CusAddPayment extends  Component{
                                     })
                                     console.log(res.data)});
                             //this.props.history.push('/viewpayment/'+this.props.match.params.id);
-                            window.location.replace('/viewpayment/'+this.props.match.params.id);
+                            window.location.replace('/cart/'+this.props.match.params.id);
                
-        }else{
-            alert('Enter valid Payment Amount...');
-        }
+        // }else{
+        //     alert('Enter valid Payment Amount...');
+        // }
 
     }
 
@@ -139,7 +157,7 @@ export default  class CusAddPayment extends  Component{
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label for="inputPassword4">Amount</label>
-                                <input type="number" class="form-control" value={this.state.amount} onChange = {this.onChangeAmount}/>
+                                <input type="number" class="form-control" value={this.state.total} onChange = {this.onChangeAmount}/>
                                 </div>
                             </div>
                             

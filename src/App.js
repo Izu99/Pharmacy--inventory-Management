@@ -44,9 +44,10 @@ class App extends Component {
 						<Route path='/markattendance' component={MarkAttendancePage}/>
 						<Route path='/taskallocationpage' component={TaskAllocationPage}/>
 						<Route path='/taskmanagementpage' component={TaskManagementPage}/>
-						<Route path='/paymentpage' component={paymentpage}/>
+						<Route path='/paymentpage/:id' component={paymentpage}/>
 						<Route path='/cart' component={cart}/>
 						<Route path='/ProductOder/:id' component={ProductOder}/>
+			
 
 
 						{/* <Redirect from='*' to='/404' /> */}
