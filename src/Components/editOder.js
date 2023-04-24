@@ -30,22 +30,22 @@ import axios from 'axios';
         // this.state.email = this.props.match.params.id;
     }
 
-    componentDidMount() {
-        //alert('edit id ' +this.props.match.params.id);
-        axios.get('http://localhost:4000/PharmacyInventory/edit/'+this.props.match.params.id)
-            .then(res => {
-                this.setState({
-                    pName: res.data.pName,
-                    price: res.data.price,
-                    category: res.data.category,
-                    qty: res.data.qty,
+    // componentDidMount() {
+    //     //alert('edit id ' +this.props.match.params.id);
+    //     axios.get('http://localhost:4000/PharmacyInventory/edit/'+this.props.match.params.id)
+    //         .then(res => {
+    //             this.setState({
+    //                 pName: res.data.pName,
+    //                 price: res.data.price,
+    //                 category: res.data.category,
+    //                 qty: res.data.qty,
                    
-                });
-            })
-            .catch(function (error){
-                console.log("Can't Get Data");
-            })
-    }
+    //             });
+    //         })
+    //         .catch(function (error){
+    //             console.log("Can't Get Data");
+    //         })
+    // }
 
 
     componentDidMount() {
@@ -54,9 +54,9 @@ import axios from 'axios';
             .then(res => {
                 this.setState({
                     pName: res.data.pName,
-                    price: res.data.price,
                     category: res.data.category,
-                    qty: res.data.qty,
+                    pieces: res.data.pieces,
+                  
                    
                 });
             })
