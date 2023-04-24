@@ -27,9 +27,7 @@ class PTableRow extends Component {
                <td>
                    {this.props.obj.lname}
                </td>
-               <td>
-                   {this.props.obj.email}
-               </td>
+              
                <td>
                    {this.props.obj.amount}
                </td>

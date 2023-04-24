@@ -24,7 +24,7 @@ class ATableRow extends Component {
             .catch(err => console.log(err))
         //this.props.history.push('/index');
         //alert("Your Payment Successfully Deleted....")
-        window.location.replace('/taskmanagementpage');
+        window.location.replace('/manageattendancepage');
     }
     render() {
         return (

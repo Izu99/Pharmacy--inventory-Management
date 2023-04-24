@@ -10,11 +10,7 @@ import PTableRow from "./paymentRow";
 export default class Payment extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			payment: [],
-			search: "",
-			email: this.props.match.params.id,
-		};
+		this.state = { payments: [] };
 		// this.state.Station = this.props.match.params.id;
 
 		this.onChangeSearch = this.onChangeSearch.bind(this);
@@ -26,21 +22,26 @@ export default class Payment extends Component {
 		});
 	}
 
-	componentDidMount() {
-		
-		axios.get('http://localhost:4000/payment/getall/')
-			.then((response) => {
-				// alert('Pass una')
+	
 
-				this.setState({ payment: response.data });
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-	}
+
+    componentDidMount() {
+        // alert('email is ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/payment/psearch/'+this.props.match.params.pathParam1)
+            .then(response => {
+                // alert('Pass una')
+                // alert('Data Tika :'+response.data)
+                this.setState({product : response.data});
+
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
+
 
 	tabRow() {
-		return this.state.payment.map(function (object, i) {
+		return this.state.payments.map(function (object, i) {
 			return <PTableRow obj={object} key={i} />;
 		});
 		
@@ -54,8 +55,8 @@ export default class Payment extends Component {
 	 	const doc = new jsPDF(orientation, unit, size);
          doc.setFontSize(15);
          const title = "My Oder Report";
-         const headers = [["fname", "lname", "amount","cardnumber","date","status"]];
-         const data = this.state.payment.map(elt=> [elt.fname, elt.lname,  elt.amount,elt.cardnumber, elt.date, elt.status]);
+         const headers = [["fname", "lname","email", "amount","cardnumber","date","status"]];
+         const data = this.state.payments.map(elt=> [elt.fname, elt.lname,  elt.email,elt.amount, elt.cardnumber, elt.date, elt.status]);
          let content = {
            startY: 50,
            head: headers,
@@ -72,37 +73,14 @@ export default class Payment extends Component {
 			
 				<br /> <h3 align='center'>payment History</h3>
 				<div className='row-frm'>
-
-				<form onSubmit={this.onSubmit}>
-                        <table className="table2">
-                        <tr> 
-                               
-                                <td> 
-                                    <input type="text" placeholder="Search..." required value={this.state.search} onChange={this.onChangeSearch} />
-                                </td>
-                                <td> 
-                                    <button type="submit" className="search"> 
-                                    <a href={"/searchpayment/" + this.state.search} className="link2" >Search</a>
-                                    </button>
-                                </td>
-                           
-                            </tr>
-                            
-                            
-                        </table>
-                        </form>
-
 					<table className='table table-striped' style={{ marginTop: 20 }}>
 						<thead>
 							<tr>
-								<th>First Name</th>
-								<th>Last</th>
-								<th>amount</th>
-								<th>cardnumber</th>
-								<th>date</th>
-								<th>cvv</th>
-								<th>status</th>
-								
+								<th>Product Name</th>
+								<th>Category</th>
+								<th>pieces</th>
+								<th>total</th>
+								<th>Payment</th>
 
 
 								 <th colSpan='5'>Action</th> 

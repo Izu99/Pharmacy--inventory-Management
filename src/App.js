@@ -16,6 +16,7 @@ import AdminProductTable from "./Components/AdminProductTable";
 import ProductSearch from "./Components/ProductSearch";
 import searchAttendance from "./Components/searchAttendance";
 import taskSearch from "./Components/taskSearch";
+import searchpayment from "./Components/searchpayment";
 import ManageAttendancePage from "./Components/ManageAttendancePage";
 import MarkAttendancePage from "./Components/MarkAttendancePage";
 import TaskAllocationPage from "./Components/TaskAllocationPage";
@@ -45,6 +46,7 @@ class App extends Component {
 						<Route  path='/ProductSearch/:pathParam1?' component={ProductSearch}/>
 						<Route  path='/searchAttendance/:pathParam1?' component={searchAttendance}/>
 						<Route  path='/taskSearch/:pathParam1?' component={taskSearch}/>
+						<Route  path='/searchpayment/:pathParam1?' component={searchpayment}/>
 
 						<Route path='/manageattendancepage' component={ManageAttendancePage}/>
 						<Route path='/markattendance' component={MarkAttendancePage}/>

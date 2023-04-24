@@ -148,6 +148,7 @@ export default class ManageAttendancePage extends Component {
                     </form> */}
 
                     <p className="ptag">Attendace History</p>
+                    <button type="submit" className="search">  <a href={"/markattendance"} className="link2" >Mark Attendance</a></button>
                     <table className="table3">
                         <tr>
                             <th>Day</th>
