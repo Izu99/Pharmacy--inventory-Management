@@ -5,8 +5,9 @@ import jsPDF from "jspdf";
 import 'jspdf-autotable';
 import "../Styles/VehicleTable.css";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import PTableRow from "./paymentRow";
+import TableRow from "./paymentRow";
 import Footer from "../Components/Footer";
+// import TableRow from "./cartRow";
 
 export default class Payment extends Component {
 	constructor(props) {
@@ -43,7 +44,7 @@ export default class Payment extends Component {
 
 	tabRow() {
 		return this.state.payments.map(function (object, i) {
-			return <PTableRow obj={object} key={i} />;
+			return <TableRow obj={object} key={i} />;
 		});
 		
 	}
