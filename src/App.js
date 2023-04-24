@@ -23,6 +23,8 @@ import paymentViewtable from "./Components/paymentViewtable";
 import paymentpage from "./Components/paymentpage";
 import cart from "./Components/cart";
 import ProductOder from "./Components/ProductOder";
+import ClientTaskManagement from "./Components/ClientTaskManagement";
+import ClientAttendance from "./Components/ClientAttendance";
 
 class App extends Component {
 	render() {
@@ -49,10 +51,10 @@ class App extends Component {
 						<Route path='/paymentpage/:id' component={paymentpage}/>
 						<Route path='/cart' component={cart}/>
 						<Route path='/ProductOder/:id' component={ProductOder}/>
-			
+						<Route path='/clienttaskpage' component={ClientTaskManagement}/>
+						<Route path='/attendence' component={ClientAttendance}/>
 
-
-						{/* <Redirect from='*' to='/404' /> */}
+						<Redirect from='*' to='/404' />
 					</Switch>
 				</Router>
 			</div>

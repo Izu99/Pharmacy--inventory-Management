@@ -94,15 +94,16 @@ export default class ProductHomePage extends Component {
 					<p className='list'>Product List</p>
 				
 				  
-					<div className='row-frm'>
-					<table className='table table-striped' style={{ marginTop: 20 }}>
+					<div className='row-frm '>
+					<table className='table table-striped table2' style={{ marginTop: 20 }}>
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
+								<th>Item name</th>
+								<th>Item Price</th>
+								<th>Item Catogory</th>
+								<th>Product No</th>
+								<th>Quantity</th>
+								<th>Description</th>
 
 								<th colSpan='3'></th>
 							</tr>

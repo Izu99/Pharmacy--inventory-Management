@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../Styles/AddProductForm.css";
+import "../Styles/EditProductForm.css";
 import "../Styles/Header.css";
 import "../Styles/LeftSidebar.css";
 import axios from 'axios';
@@ -132,7 +132,7 @@ export default class EditProductForm extends Component{
 
 render() {
     return(
-        <div className='AddProductForm'> 
+        <div className='EditProductForm'> 
             <div className='left-sidebar'>
                 <div className='component-name dashboard'>
 				    <div className='text'>
@@ -224,7 +224,7 @@ render() {
                     </tr>
                     <tr>
                          <td>
-                            <button type="submit">Edit Product</button>
+                            <button type="submit">Add Product</button>
                         </td>
                     </tr>
                 </table>
