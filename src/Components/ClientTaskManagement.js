@@ -6,6 +6,8 @@ import {BrowserRouter as Router, Link} from "react-router-dom";
  import TableRow from './ClienttaskRow';
 import "../Styles/LeftSidebar.css";
  import "../Styles/VehicleTable.css";
+ import Footer from "../Components/Footer";
+
 import axios from 'axios';
 
 export default class taskHomePage extends Component {
@@ -148,6 +150,7 @@ export default class taskHomePage extends Component {
                      
                    
 				</div>
+                <Footer />
 			</div>
 		);
 	}

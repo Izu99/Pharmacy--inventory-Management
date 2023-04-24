@@ -2,6 +2,7 @@ import  React, {Component} from 'react';
 import "../Styles/productOder.css";
 // import Footer from "./Footer";
 import axios from 'axios';
+import Footer from "../Components/Footer";
 
 
 	export default  class productOder extends  Component{
@@ -105,7 +106,7 @@ import axios from 'axios';
 
             this.state.qty = avalablestock;
 
-            if (this.state.qty < 0) {
+            if (this.state.qty <= 0) {
                 alert("Out of Stock");
                 this.props.history.push('/producthomepage');
                 window.location.replace('/producthomepage');
@@ -193,7 +194,7 @@ import axios from 'axios';
 					<button  type='submit'>add</button>
 				</form>
 			</div>
-            {/* <Footer /> */}
+            <Footer />
 		</div>
 	);
 }  

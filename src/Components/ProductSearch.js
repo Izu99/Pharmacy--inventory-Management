@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Link} from "react-router-dom";
  import ProductTableSerach from './ProductClientThrow.js';
 import "../Styles/LeftSidebar.css";
 import "../Styles/VehicleTable.css";
+import Footer from "../Components/Footer";
 import axios from 'axios';
 
 export default class ProductHomePage extends Component {
@@ -115,6 +116,7 @@ export default class ProductHomePage extends Component {
     
                    
 				</div>
+				<Footer />
 			</div>
 		);
 	}

@@ -4,6 +4,7 @@ import "../Styles/Header.css";
 import "../Styles/LeftSidebar.css";
 import axios from 'axios';
 import {BrowserRouter as Router, Link} from "react-router-dom";
+import Footer from "../Components/Footer";
 
 
 export default class AddProductForm extends Component{
@@ -207,9 +208,14 @@ render() {
                         </td>
                     </tr>
                 </table>
+                <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
                 </form>
+             
             </div>
+           
+            <Footer />
        </div>
+       
 );
     }
 }

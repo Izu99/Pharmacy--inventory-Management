@@ -70,20 +70,20 @@ paymentRoutes.route('/cusdeletepayment/:id').get(function(req,res){
     });
 });
 
-paymentRoutes.route('/cusgetsearchpayment/:pathParam1?/:pathParam2?').get(function (req, res){
+paymentRoutes.route('/psearch/:pathParam1?').get(function (req, res){
     let search = req.params.pathParam1;
-    let email = req.params.pathParam2;
+    // let email = req.params.pathParam2;
     console.log("your search is "+search);
-    console.log("your email is "+email);
-   
-    Payments.find({$and:[{$or: [{date: search}, {amount: search}]},{email: email}]},function (err,pay){ 
-   
+
+    // Orders.find({$and:[{date : search},{email : email}]},function (err,srch){
+        Payments.find({$and:[{$or: [{fname: search}, {lname: search},{date: search},{status: search}]}]},function (err,srch){ 
         if(err)
             console.log(err);
         else{
-            res.json(pay)
+            res.json(srch)
         }
     });
+
 });
 
 

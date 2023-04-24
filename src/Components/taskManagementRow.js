@@ -15,7 +15,7 @@ class task extends Component {
               .then(this.setState({redirect: true}))
               .catch(err => console.log(err))
           //this.props.history.push('/index');
-          alert("Your Order Successfully Deleted....")
+          alert("Task Successfully Deleted....")
           window.location.replace('/taskmanagementpage/'+this.props.obj.email);
       }
 

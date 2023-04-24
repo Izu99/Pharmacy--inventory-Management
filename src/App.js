@@ -15,6 +15,8 @@ import editOder from "./Components/editOder";
 import AdminProductTable from "./Components/AdminProductTable";
 import ProductSearch from "./Components/ProductSearch";
 import searchAttendance from "./Components/searchAttendance";
+import taskSearch from "./Components/taskSearch";
+import searchpayment from "./Components/searchpayment";
 import ManageAttendancePage from "./Components/ManageAttendancePage";
 import MarkAttendancePage from "./Components/MarkAttendancePage";
 import TaskAllocationPage from "./Components/TaskAllocationPage";
@@ -24,7 +26,8 @@ import paymentpage from "./Components/paymentpage";
 import cart from "./Components/cart";
 import ProductOder from "./Components/ProductOder";
 import ClientTaskManagement from "./Components/ClientTaskManagement";
-import ClientAttendance from "./Components/ClientAttendance";
+ import ClientAttendance from "./Components/ClientAttendance";
+// import Login from "./Components/Login";
 
 class App extends Component {
 	render() {
@@ -34,14 +37,16 @@ class App extends Component {
 				<Router>
 					<Switch>
 						
-						{/* <Route path='/Login' component={Login} /> */}
-						<Route path='/producthomepage' component={ProductHomePage} />
+						{/* <Route pat exact ='/Login' component={Login} /> */}
+						<Route path exact='/producthomepage' component={ProductHomePage} />
 						<Route path='/addproductform' component={AddProdcutForm}/>
 						<Route path='/editproductform/:id' component={EditProductForm}/>
 						<Route path='/editOder/:id' component={editOder}/>
 						<Route path='/AdminProductTable' component={AdminProductTable}/>
 						<Route  path='/ProductSearch/:pathParam1?' component={ProductSearch}/>
 						<Route  path='/searchAttendance/:pathParam1?' component={searchAttendance}/>
+						<Route  path='/taskSearch/:pathParam1?' component={taskSearch}/>
+						<Route  path='/searchpayment/:pathParam1?' component={searchpayment}/>
 
 						<Route path='/manageattendancepage' component={ManageAttendancePage}/>
 						<Route path='/markattendance' component={MarkAttendancePage}/>

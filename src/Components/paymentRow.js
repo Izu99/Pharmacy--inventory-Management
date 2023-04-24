@@ -13,7 +13,7 @@ class PTableRow extends Component {
               .then(this.setState({redirect: true}))
               .catch(err => console.log(err))
           //this.props.history.push('/index');
-          alert("Your Order Successfully Deleted....")
+          alert(" Successfully Deleted....")
         //   window.location.replace('/paymentViewtable/'+this.props.obj.email);
         window.location.replace('/paymentViewtable');
       }
@@ -27,9 +27,7 @@ class PTableRow extends Component {
                <td>
                    {this.props.obj.lname}
                </td>
-               <td>
-                   {this.props.obj.email}
-               </td>
+              
                <td>
                    {this.props.obj.amount}
                </td>

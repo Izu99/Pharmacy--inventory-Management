@@ -6,6 +6,7 @@ import axios from 'axios';
 import jsPDF from "jspdf";
 import 'jspdf-autotable';
 import AdminAtendaceRow from "./AdminAtendaceRow";
+import Footer from "../Components/Footer";
 
 
 export default class ManageAttendancePage extends Component {
@@ -165,6 +166,8 @@ export default class ManageAttendancePage extends Component {
                         </tr>
                     </table>
                 </div>
+                <Footer />
+
             </div>
 
         );

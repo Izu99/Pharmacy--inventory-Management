@@ -7,6 +7,9 @@ import {BrowserRouter as Router, Link} from "react-router-dom";
 import "../Styles/LeftSidebar.css";
  import "../Styles/VehicleTable.css";
 import axios from 'axios';
+import jsPDF from "jspdf";
+import 'jspdf-autotable';
+import Footer from "../Components/Footer";
 
 export default class taskHomePage extends Component {
 
@@ -22,7 +25,7 @@ export default class taskHomePage extends Component {
     onChangeSearch(e){
         this.setState( {
            search: e.target.value
-        });
+        }); 
 
     }
 
@@ -46,6 +49,27 @@ export default class taskHomePage extends Component {
         });
         // return <OrderTableRow obj={this.state.orders}/>
     }
+
+
+    exportPDF = () => {
+        const unit = "pt";
+        const size = "A4"; // Use A1, A2, A3 or A4
+        const orientation = "portrait"; // portrait or landscape
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+        doc.setFontSize(15);
+        const title = "task Report";
+        const headers = [["taskNo", "staffid", "description","status"]];
+        const data = this.state.task.map(elt=> [elt.taskNo, elt.staffid,  elt.description, elt.status]);
+        let content = {
+          startY: 50,
+          head: headers,
+          body: data
+        };
+        doc.text(title, marginLeft, 40);
+        doc.autoTable(content);
+        doc.save("report.pdf")
+      }
 
  
 
@@ -110,16 +134,16 @@ export default class taskHomePage extends Component {
                                  </td>
                             </tr> 
                         </table>   
-                    
+                    	<form onSubmit={this.onSubmit}>
                         <table className="table2">
                         <tr> 
                                 <td>Search Staff Id</td>
                                 <td> 
-                                    <input type="text" placeholder="Search..."/>
+                                    <input type="text" placeholder="Search..." required value={this.state.search} onChange={this.onChangeSearch} />
                                 </td>
                                 <td> 
                                     <button type="submit" className="search"> 
-                                        <a className="link">Search</a>
+                                    <a href={"/taskSearch/" + this.state.search} className="link2" >Search</a>
                                     </button>
                                 </td>
                            
@@ -127,6 +151,7 @@ export default class taskHomePage extends Component {
                             
                             
                         </table>
+                        </form>
                         <p className="ptag">Today Allocated Tasks for Employees</p>
                          <table className="table3">
                             <tr>
@@ -145,7 +170,7 @@ export default class taskHomePage extends Component {
                             <tr>
                                 <td>Generate Task Report</td>
                                 <td>
-                                    <button >Task Report</button>
+                                    <button onClick={() => this.exportPDF()}>Task Report</button>
                                 </td>
                             </tr>
                         </table> 
@@ -159,6 +184,7 @@ export default class taskHomePage extends Component {
                      
                    
 				</div>
+                <Footer />
 			</div>
 		);
 	}

@@ -6,6 +6,7 @@ import axios from 'axios';
 import jsPDF from "jspdf";
 import 'jspdf-autotable';
 import ACTableRow from "./clientattendanceRow";
+import Footer from "../Components/Footer";
 
 
 export default class ManageAttendancePage extends Component {
@@ -148,6 +149,7 @@ export default class ManageAttendancePage extends Component {
                     </form> */}
 
                     <p className="ptag">Attendace History</p>
+                    <button type="submit" className="search">  <a href={"/markattendance"} className="link2" >Mark Attendance</a></button>
                     <table className="table3">
                         <tr>
                             <th>Day</th>
@@ -158,6 +160,7 @@ export default class ManageAttendancePage extends Component {
                     </table>
                    
                 </div>
+                <Footer />
             </div>
 
         );

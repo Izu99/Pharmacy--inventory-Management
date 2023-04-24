@@ -3,6 +3,7 @@ import "../Styles/TaskAllocationPage.css";
 import "../Styles/Header.css";
 import "../Styles/LeftSidebar.css";
 import axios from 'axios';
+import Footer from "../Components/Footer";
 
 export default class TaskAllocationPage extends Component{
 
@@ -78,11 +79,11 @@ export default class TaskAllocationPage extends Component{
                             
                                     })
                                     console.log(res.data)});
-                            this.props.history.push('/manageattendancepage');
+                            this.props.history.push('/taskmanagementpage');
                    
                 }
                 else{
-                    alert('Invalid.Description be more than 2 characters');
+                    alert('Invalid.Description be more than 5 characters');
                 }
             } 
             else {
@@ -178,6 +179,7 @@ export default class TaskAllocationPage extends Component{
                     </table> 
                     </form>
                 </div>
+                <Footer />
         </div>
 );
 }
