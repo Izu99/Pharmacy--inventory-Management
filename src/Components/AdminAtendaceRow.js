@@ -36,7 +36,7 @@ class ATableRow extends Component {
                 <td>
                    {/* <Link to={"/editproductform/"+this.props.obj._id} className="btn btn-success">edit</Link>
                       &nbsp; */}
-                    <button onClick={this.delete} className="btn btn-danger">Detele</button> 
+                    <button onClick={this.delete} className="delete">Detele</button> 
                </td>  
            </tr>
         );

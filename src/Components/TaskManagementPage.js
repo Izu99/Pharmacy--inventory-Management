@@ -57,7 +57,7 @@ export default class taskHomePage extends Component {
 					<img src={logo} alt='' className='header-logo' />
 					<div className='component-name dashboard'>
 						<div className='text'>
-							<a href='/dashboard'> Dashboard</a>
+							<a href='/producthomepage'>Product</a>
 						</div>
 					</div>
 					<div className='component-name farmer'>

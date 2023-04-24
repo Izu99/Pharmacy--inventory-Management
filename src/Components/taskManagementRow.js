@@ -43,7 +43,7 @@ class task extends Component {
                 <td>
                    {/* <Link to={"/edit/"+this.props.obj._id} className="btn btn-success">Buy</Link> */}
                       &nbsp;
-                    <button onClick={this.approve} className="btn btn-danger">Complete</button> 
+                    <button onClick={this.approve} className="complete">Complete</button> 
                </td>  
            </tr>
         );
