@@ -122,6 +122,9 @@ export default class ProductHomePage extends Component {
 						</tr>
 					</table>
                     </form>
+
+					<button type="submit" className="search">  <a href ={"/cart"} >cart</a></button>
+
 					<p className='list'>Product List</p>
 				
 				  

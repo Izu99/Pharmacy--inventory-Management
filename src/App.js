@@ -19,6 +19,8 @@ import MarkAttendancePage from "./Components/MarkAttendancePage";
 import TaskAllocationPage from "./Components/TaskAllocationPage";
 import TaskManagementPage from "./Components/TaskManagementPage";
 import paymentpage from "./Components/paymentpage";
+import cart from "./Components/cart";
+import ProductOder from "./Components/ProductOder";
 
 class App extends Component {
 	render() {
@@ -31,7 +33,7 @@ class App extends Component {
 						{/* <Route path='/Login' component={Login} /> */}
 						<Route path='/producthomepage' component={ProductHomePage} />
 						<Route path='/addproductform' component={AddProdcutForm}/>
-						<Route path='/editproductform' component={EditProductForm}/>
+						<Route path='/editproductform/:id' component={EditProductForm}/>
 						<Route path='/AdminProductTable' component={AdminProductTable}/>
 						<Route  path='/ProductSearch/:pathParam1?' component={ProductSearch}/>
 						<Route  path='/searchAttendance/:pathParam1?' component={searchAttendance}/>
@@ -41,6 +43,8 @@ class App extends Component {
 						<Route path='/taskallocationpage' component={TaskAllocationPage}/>
 						<Route path='/taskmanagementpage' component={TaskManagementPage}/>
 						<Route path='/paymentpage' component={paymentpage}/>
+						<Route path='/cart' component={cart}/>
+						<Route path='/ProductOder/:id' component={ProductOder}/>
 
 
 						{/* <Redirect from='*' to='/404' /> */}

@@ -6,7 +6,7 @@ import axios from 'axios';
 import {BrowserRouter as Router, Link} from "react-router-dom";
 
 
-export default class AddProductForm extends Component{
+export default class EditProductForm extends Component{
 
     constructor(props) {
         super(props);
@@ -33,7 +33,7 @@ export default class AddProductForm extends Component{
 
     componentDidMount() {
         // alert('edit id ' +this.props.match.params.id);
-        axios.get('http://localhost:4000/PharmacyInventory/edit/'+this.props.match.params.id)
+        axios.get('http://localhost:4000/PharmacyInventory/iedit/'+this.props.match.params.id)
             .then(res => {
                 this.setState({
                     pName: res.data.pName,
@@ -41,8 +41,8 @@ export default class AddProductForm extends Component{
                     category: res.data.category,
                     pNo: res.data.pNo,
 					qty: res.data.qty,
-                    description: res.data.description,
-				
+					description: res.data.description,
+					
                    
                 });
             })
@@ -50,6 +50,7 @@ export default class AddProductForm extends Component{
                 console.log("Can't Get Data");
             })
     }
+
     onChangepName(e){
         this.setState( {
             pName: e.target.value
@@ -97,7 +98,7 @@ export default class AddProductForm extends Component{
                 if(this.state.qty.length >= 0){
                     if(this.state.description.length > 10){
                       
-                        axios.post('http://localhost:4000/Products/update/'+this.props.match.params.id,obj)
+                        axios.post('http://localhost:4000/PharmacyInventory/update/'+this.props.match.params.id,obj)
                                 .then(res => {
                                     alert("add Successfully");
                                     this.setState({
@@ -170,7 +171,7 @@ render() {
 			    </div>
             </div>  
             <div className='right-side'>
-                <h2>Add Product Form</h2>
+                <h2>Edit Product Form</h2>
                 <form onSubmit={this.onSubmit}>
                 <table className="table">
                     <tr >
@@ -223,7 +224,7 @@ render() {
                     </tr>
                     <tr>
                          <td>
-                            <button type="submit">Add Product</button>
+                            <button type="submit">Edit Product</button>
                         </td>
                     </tr>
                 </table>
